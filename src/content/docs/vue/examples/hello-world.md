@@ -1,6 +1,6 @@
 ---
 title: Hello World
-description: Ejemplo mínimo de un componente Single File en Vue 3.
+description: Minimal example of a Single File Component in Vue 3.
 ---
 
 ```vue

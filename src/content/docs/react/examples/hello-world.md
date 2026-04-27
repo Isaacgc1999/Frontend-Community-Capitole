@@ -1,6 +1,6 @@
 ---
 title: Hello World
-description: Ejemplo mínimo de un componente funcional en React.
+description: Minimal example of a functional component in React.
 ---
 
 ```tsx

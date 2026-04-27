@@ -1,9 +1,9 @@
 ---
 title: React
-description: Guidelines, arquitectura, patrones, state management y ejemplos en React.
+description: Guidelines, architecture, patterns, state management and examples in React.
 ---
 
-Sección dedicada a React. Subsecciones disponibles:
+Section dedicated to React. Available subsections:
 
 - Guidelines
 - Architecture

@@ -1,10 +1,10 @@
 ---
-title: Otros
-description: Svelte, Web Components y experimentos varios.
+title: Others
+description: Svelte, Web Components and various experiments.
 ---
 
-Sección para frameworks y tecnologías que no encajan en Angular / React / Vue:
+Section for frameworks and technologies that don't fit into Angular / React / Vue:
 
 - Svelte
 - Web Components
-- Experimentos
+- Experiments

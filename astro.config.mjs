@@ -11,7 +11,7 @@ export default defineConfig({
         "Knowledge base, guidelines and code examples across frontend frameworks and languages.",
       defaultLocale: "root",
       locales: {
-        root: { label: "Español", lang: "es" },
+        root: { label: "English", lang: "en" },
       },
       social: [
         {

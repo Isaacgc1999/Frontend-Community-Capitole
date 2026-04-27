@@ -1,6 +1,6 @@
 ---
 title: Testing
-description: Próximamente — agregá ejemplos y notas en esta sección.
+description: Coming soon — add examples and notes to this section.
 ---
 
-Esta sección todavía no tiene contenido. Sumá un `.md` o `.mdx` acá para empezar.
+This section has no content yet. Add a `.md` or `.mdx` file here to get started.

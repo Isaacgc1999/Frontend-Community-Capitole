@@ -1,6 +1,6 @@
 ---
 title: Hello World
-description: Ejemplo mínimo de un componente standalone en Angular.
+description: Minimal example of a standalone component in Angular.
 ---
 
 ```ts

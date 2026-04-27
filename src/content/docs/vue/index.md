@@ -1,9 +1,9 @@
 ---
 title: Vue
-description: Guidelines, arquitectura, composables, patrones y ejemplos en Vue.
+description: Guidelines, architecture, composables, patterns and examples in Vue.
 ---
 
-Sección dedicada a Vue. Subsecciones disponibles:
+Section dedicated to Vue. Available subsections:
 
 - Guidelines
 - Architecture

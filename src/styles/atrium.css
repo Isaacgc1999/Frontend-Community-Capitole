@@ -1,3 +1,9 @@
+/* =============================================================
+   Atrium — global tokens + Starlight variable overrides
+   Drop this file at: src/styles/atrium.css
+   Then reference it from astro.config.mjs via customCss.
+   ============================================================= */
+
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
 @import '@fontsource/inter/600.css';
@@ -5,46 +11,120 @@
 @import '@fontsource/jetbrains-mono/400.css';
 @import '@fontsource/jetbrains-mono/500.css';
 
-/* Map Atrium tokens to Starlight's CSS variables */
+/* ---- Atrium primitives -------------------------------------- */
 :root {
-  /* Atrium primitives */
+  /* Color */
   --atrium-ink-900: #0B1220;
-  --atrium-paper:   #F5F4EE;
-  --atrium-paper-elev: #FAF9F4;
-  --atrium-accent:  #1E40AF;
-  --atrium-accent-bright: #3B82F6;
-  --atrium-border:  #DCDACE;
-  --atrium-fg-muted: #364668;
-  --atrium-fg-subtle: #5A6788;
+  --atrium-ink-800: #111A2E;
+  --atrium-ink-700: #1A2540;
+  --atrium-ink-600: #243152;
+  --atrium-ink-500: #364668;
+  --atrium-ink-400: #5A6788;
+  --atrium-ink-300: #94A3B8;
+  --atrium-ink-200: #C7CFDD;
+  --atrium-ink-100: #E4E8F0;
+  --atrium-ink-050: #EEF1F6;
 
-  /* Starlight overrides — light theme */
-  --sl-font: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --sl-font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --atrium-paper:       #F5F4EE;
+  --atrium-paper-elev:  #FAF9F4;
+  --atrium-paper-warm:  #EDEBE2;
+  --atrium-paper-line:  #DCDACE;
+  --atrium-paper-strong:#C5C2B4;
 
-  --sl-color-bg: var(--atrium-paper);
-  --sl-color-bg-nav: var(--atrium-paper);
-  --sl-color-bg-sidebar: var(--atrium-paper);
+  --atrium-indigo-700:  #1E3A8A;
+  --atrium-indigo-600:  #1E40AF;
+  --atrium-indigo-500:  #2E54C8;
+  --atrium-blue-500:    #3B82F6;
+  --atrium-blue-400:    #60A5FA;
+
+  --atrium-positive: #15803D;
+  --atrium-warning:  #B45309;
+  --atrium-critical: #B91C1C;
+
+  /* Semantic */
+  --atrium-bg:          var(--atrium-paper);
+  --atrium-bg-elev:     var(--atrium-paper-elev);
+  --atrium-fg:          var(--atrium-ink-900);
+  --atrium-fg-muted:    var(--atrium-ink-500);
+  --atrium-fg-subtle:   var(--atrium-ink-400);
+  --atrium-border:      var(--atrium-paper-line);
+  --atrium-border-strong: var(--atrium-paper-strong);
+  --atrium-accent:      var(--atrium-indigo-600);
+  --atrium-accent-bright: var(--atrium-blue-500);
+
+  /* Type scale */
+  --atrium-fs-12: 12px; --atrium-fs-13: 13px; --atrium-fs-14: 14px;
+  --atrium-fs-15: 15px; --atrium-fs-16: 16px; --atrium-fs-18: 18px;
+  --atrium-fs-21: 21px; --atrium-fs-25: 25px; --atrium-fs-30: 30px;
+  --atrium-fs-36: 36px; --atrium-fs-48: 48px; --atrium-fs-64: 64px;
+
+  /* Space */
+  --atrium-s-1: 4px;  --atrium-s-2: 8px;  --atrium-s-3: 12px;
+  --atrium-s-4: 16px; --atrium-s-5: 20px; --atrium-s-6: 24px;
+  --atrium-s-8: 32px; --atrium-s-10:40px; --atrium-s-12:48px;
+  --atrium-s-16:64px; --atrium-s-20:80px; --atrium-s-24:96px;
+
+  /* Radii */
+  --atrium-r-sm: 4px; --atrium-r-md: 6px;
+  --atrium-r-lg: 10px; --atrium-r-xl: 16px;
+
+  /* Type families */
+  --atrium-font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --atrium-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* ---- Starlight variable overrides — LIGHT ------------------- */
+:root {
+  --sl-font: var(--atrium-font-sans);
+  --sl-font-mono: var(--atrium-font-mono);
+
+  --sl-color-bg:           var(--atrium-paper);
+  --sl-color-bg-nav:       var(--atrium-paper);
+  --sl-color-bg-sidebar:   var(--atrium-paper);
   --sl-color-bg-inline-code: var(--atrium-paper-elev);
-  --sl-color-text: var(--atrium-ink-900);
-  --sl-color-text-accent: var(--atrium-accent);
-  --sl-color-accent: var(--atrium-accent);
-  --sl-color-accent-high: var(--atrium-accent-bright);
-  --sl-color-hairline: var(--atrium-border);
-  --sl-color-hairline-light: var(--atrium-border);
+  --sl-color-bg-accent:    var(--atrium-accent);
+
+  --sl-color-text:         var(--atrium-ink-900);
+  --sl-color-text-invert:  var(--atrium-paper);
+  --sl-color-text-accent:  var(--atrium-accent);
+  --sl-color-accent:       var(--atrium-accent);
+  --sl-color-accent-low:   rgba(46, 84, 200, 0.10);
+  --sl-color-accent-high:  var(--atrium-accent-bright);
+
+  --sl-color-hairline:        var(--atrium-paper-line);
+  --sl-color-hairline-light:  var(--atrium-paper-line);
+  --sl-color-hairline-shade:  var(--atrium-paper-strong);
 }
 
-/* Dark theme override (Starlight toggles [data-theme="dark"]) */
+/* ---- Starlight variable overrides — DARK -------------------- */
 :root[data-theme='dark'] {
-  --sl-color-bg: #0B1220;
-  --sl-color-bg-nav: #111A2E;
-  --sl-color-bg-sidebar: #0B1220;
-  --sl-color-text: #E4E8F0;
-  --sl-color-text-accent: #60A5FA;
-  --sl-color-accent: #3B82F6;
-  --sl-color-hairline: #1A2540;
+  --sl-color-bg:           #0B1220;
+  --sl-color-bg-nav:       #111A2E;
+  --sl-color-bg-sidebar:   #0B1220;
+  --sl-color-bg-inline-code: #1A2540;
+
+  --sl-color-text:         #E4E8F0;
+  --sl-color-text-invert:  #0B1220;
+  --sl-color-text-accent:  #60A5FA;
+  --sl-color-accent:       #3B82F6;
+  --sl-color-accent-low:   rgba(59, 130, 246, 0.16);
+  --sl-color-accent-high:  #60A5FA;
+
+  --sl-color-hairline:        #1A2540;
+  --sl-color-hairline-light:  #1A2540;
+  --sl-color-hairline-shade:  #243152;
 }
 
-/* Headings — tighter letter-spacing per Atrium spec */
+/* ---- Prose tweaks (matches Atrium typography spec) ---------- */
 .sl-markdown-content h1 { letter-spacing: -0.025em; font-weight: 600; }
-.sl-markdown-content h2 { letter-spacing: -0.02em;  font-weight: 600; }
-.sl-markdown-content h3 { letter-spacing: -0.01em;  font-weight: 600; }
+.sl-markdown-content h2 { letter-spacing: -0.020em; font-weight: 600; }
+.sl-markdown-content h3 { letter-spacing: -0.010em; font-weight: 600; }
+.sl-markdown-content h4 { font-weight: 600; }
+
+.sl-markdown-content code:not(pre code) {
+  font-family: var(--atrium-font-mono);
+  font-size: 0.92em;
+  border: 1px solid var(--atrium-border);
+  border-radius: var(--atrium-r-sm);
+  padding: 1px 5px;
+}

@@ -1,9 +1,9 @@
 ---
-title: Compartido
-description: Best practices transversales a todos los frameworks.
+title: Shared
+description: Cross-cutting best practices for all frameworks.
 ---
 
-Recursos transversales que aplican sin importar el framework:
+Cross-cutting resources that apply regardless of the framework:
 
 - Best practices
 - Performance

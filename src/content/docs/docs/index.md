@@ -1,10 +1,10 @@
 ---
 title: Docs
-description: Documentación general, onboarding, decisiones y glosario.
+description: General documentation, onboarding, decisions and glossary.
 ---
 
-Sección de documentación general:
+General documentation section:
 
-- **Onboarding**: pasos para nuevos integrantes.
-- **Decisiones (ADRs)**: registro de decisiones técnicas relevantes.
-- **Glosario**: términos y conceptos compartidos.
+- **Onboarding**: steps for new members.
+- **Decisions (ADRs)**: record of relevant technical decisions.
+- **Glossary**: shared terms and concepts.

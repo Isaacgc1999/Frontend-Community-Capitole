@@ -1,6 +1,6 @@
 ---
-title: Decisiones (ADRs)
-description: Registro de decisiones técnicas (Architecture Decision Records).
+title: Decisions (ADRs)
+description: Record of technical decisions (Architecture Decision Records).
 ---
 
-Documentá acá las decisiones técnicas importantes con formato ADR: contexto, decisión, consecuencias.
+Document important technical decisions here using the ADR format: context, decision, consequences.

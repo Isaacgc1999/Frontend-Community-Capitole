@@ -97,77 +97,77 @@ npm run preview  # preview the production build locally
 
 ---
 
-## 📝 Cómo agregar documentación o ejemplos
+## 📝 How to add documentation or examples
 
-El sitio está construido con [Astro](https://astro.build/) y [Starlight](https://starlight.astro.build/). Cada archivo `.md` o `.mdx` dentro de `src/content/docs/` se convierte automáticamente en una página.
+The site is built with [Astro](https://astro.build/) and [Starlight](https://starlight.astro.build/). Every `.md` or `.mdx` file inside `src/content/docs/` is automatically turned into a page.
 
-### Paso 1 — Elegí la carpeta correcta
+### Step 1 — Pick the right folder
 
-Ubicá tu archivo en la sección que corresponda:
+Place your file in the section that matches its content:
 
-| Carpeta | Contenido |
+| Folder | Content |
 |---|---|
-| `src/content/docs/docs/` | Onboarding, ADRs, glosario |
-| `src/content/docs/angular/` | Guidelines, ejemplos, patrones de Angular |
-| `src/content/docs/react/` | Guidelines, ejemplos, patrones de React |
-| `src/content/docs/vue/` | Guidelines, ejemplos, patrones de Vue |
-| `src/content/docs/others/` | Svelte, Web Components, experimentos |
-| `src/content/docs/shared/` | Temas transversales: a11y, perf, testing, etc. |
+| `src/content/docs/docs/` | Onboarding, ADRs, glossary |
+| `src/content/docs/angular/` | Guidelines, examples, Angular patterns |
+| `src/content/docs/react/` | Guidelines, examples, React patterns |
+| `src/content/docs/vue/` | Guidelines, examples, Vue patterns |
+| `src/content/docs/others/` | Svelte, Web Components, experiments |
+| `src/content/docs/shared/` | Cross-cutting topics: a11y, perf, testing, etc. |
 
-Dentro de cada sección hay subcarpetas por tema (p. ej. `react/examples/`, `angular/guidelines/`). Usá la subcarpeta que mejor describe tu aporte.
+Each section has sub-folders by topic (e.g. `react/examples/`, `angular/guidelines/`). Use the sub-folder that best describes your contribution.
 
-### Paso 2 — Creá el archivo
+### Step 2 — Create the file
 
-Creá un archivo `.md` o `.mdx` con un nombre descriptivo en [kebab-case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case):
+Create a `.md` or `.mdx` file with a descriptive name in [kebab-case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case):
 
 ```
 src/content/docs/react/examples/use-reducer-cart.md
 src/content/docs/shared/testing/unit-testing-hooks.mdx
 ```
 
-**¿Cuándo usar `.md` y cuándo `.mdx`?**
+**When to use `.md` vs `.mdx`?**
 
-- `.md` — suficiente para texto, código y tablas simples.
-- `.mdx` — necesario si querés usar componentes de Starlight (callouts, tabs, cards) o JSX dentro del contenido.
+- `.md` — sufficient for text, code, and simple tables.
+- `.mdx` — required if you want to use Starlight components (callouts, tabs, cards) or JSX inside the content.
 
-### Paso 3 — Agregá el frontmatter
+### Step 3 — Add frontmatter
 
-Todo archivo debe empezar con un bloque frontmatter con al menos `title` y `description`:
+Every file must start with a frontmatter block containing at least `title` and `description`:
 
 ```md
 ---
-title: useReducer para carrito de compras
-description: Ejemplo de manejo de estado complejo con useReducer en React.
+title: useReducer for a shopping cart
+description: Example of complex state management with useReducer in React.
 ---
 
-El contenido va acá...
+Content goes here...
 ```
 
-Propiedades útiles del frontmatter de Starlight:
+Useful Starlight frontmatter properties:
 
-| Propiedad | Descripción |
+| Property | Description |
 |---|---|
-| `title` | **Obligatorio.** Título que aparece en la página y en el sidebar. |
-| `description` | **Recomendado.** Descripción breve para SEO y vista previa. |
-| `sidebar.order` | Número para controlar el orden dentro de la sección (menor = primero). |
-| `sidebar.label` | Texto alternativo para el sidebar (si diferís del título). |
+| `title` | **Required.** Title shown on the page and in the sidebar. |
+| `description` | **Recommended.** Short description for SEO and previews. |
+| `sidebar.order` | Number to control order within the section (lower = first). |
+| `sidebar.label` | Alternative label for the sidebar (if different from the title). |
 
-### Paso 4 — Escribí el contenido
+### Step 4 — Write the content
 
-Para un archivo `.md`:
+For a `.md` file:
 
 ```md
 ---
-title: useReducer para carrito de compras
-description: Ejemplo de manejo de estado complejo con useReducer en React.
+title: useReducer for a shopping cart
+description: Example of complex state management with useReducer in React.
 ---
 
-## Por qué useReducer
+## Why useReducer
 
-Cuando el estado tiene múltiples sub-valores o las transiciones dependen del estado anterior,
-`useReducer` es preferible a `useState`.
+When state has multiple sub-values or transitions depend on the previous state,
+`useReducer` is preferable to `useState`.
 
-## Ejemplo
+## Example
 
 ```tsx
 type Action =
@@ -183,18 +183,18 @@ function cartReducer(state: CartItem[], action: Action): CartItem[] {
 \`\`\`
 ```
 
-Para un archivo `.mdx` podés usar los componentes de Starlight:
+For a `.mdx` file you can use Starlight components:
 
 ```mdx
 ---
-title: Testing de hooks con React Testing Library
-description: Cómo testear hooks custom en React con RTL.
+title: Testing hooks with React Testing Library
+description: How to test custom hooks in React with RTL.
 ---
 
 import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Aside type="tip">
-  Usá `renderHook` para testear hooks sin necesidad de un componente wrapper.
+  Use `renderHook` to test hooks without needing a wrapper component.
 </Aside>
 
 <Tabs>
@@ -218,30 +218,30 @@ import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 </Tabs>
 ```
 
-### Paso 5 — Verificá en el servidor local
+### Step 5 — Verify in the local server
 
 ```bash
 npm run dev
 ```
 
-Abrí [http://localhost:4321](http://localhost:4321). Tu página aparece en el sidebar automáticamente dentro de la sección de la carpeta donde la creaste.
+Open [http://localhost:4321](http://localhost:4321). Your page appears in the sidebar automatically under the section matching the folder you placed it in.
 
-### Nota: crear una carpeta nueva
+### Note: creating a new folder
 
-Si necesitás crear una subcarpeta que no existe todavía (p. ej. `react/hooks/`), también tenés que registrarla en el sidebar dentro de `astro.config.mjs`:
+If you need to create a sub-folder that doesn't exist yet (e.g. `react/hooks/`), you also need to register it in the sidebar inside `astro.config.mjs`:
 
 ```js
 // astro.config.mjs
 {
   label: "React",
   items: [
-    // ...entradas existentes
-    { label: "Hooks", autogenerate: { directory: "react/hooks" } }, // ← agregar
+    // ...existing entries
+    { label: "Hooks", autogenerate: { directory: "react/hooks" } }, // ← add this
   ],
 }
 ```
 
-Sin esa entrada el archivo existe pero no aparece en el sidebar de navegación.
+Without that entry the file exists but won't appear in the navigation sidebar.
 
 ---
 

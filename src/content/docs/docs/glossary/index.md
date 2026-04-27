@@ -1,6 +1,6 @@
 ---
-title: Glosario
-description: Términos y conceptos comunes usados en la comunidad frontend.
+title: Glossary
+description: Common terms and concepts used in the frontend community.
 ---
 
-Acá vamos sumando definiciones de términos que usamos a diario.
+This is where we collect definitions of terms we use every day.

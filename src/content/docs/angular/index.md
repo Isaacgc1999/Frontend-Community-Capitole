@@ -1,9 +1,9 @@
 ---
 title: Angular
-description: Guidelines, arquitectura, componentes, patrones y ejemplos en Angular.
+description: Guidelines, architecture, components, patterns and examples in Angular.
 ---
 
-Sección dedicada a Angular. Subsecciones disponibles:
+Section dedicated to Angular. Available subsections:
 
 - Guidelines
 - Architecture

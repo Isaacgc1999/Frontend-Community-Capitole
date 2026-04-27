@@ -1,6 +1,6 @@
 ---
 title: Onboarding
-description: Pasos iniciales para nuevos integrantes de la comunidad frontend.
+description: Initial steps for new members of the frontend community.
 ---
 
-Agregá acá guías de onboarding: setup del entorno, herramientas, accesos, primeros pasos en proyectos.
+Add onboarding guides here: environment setup, tools, access, and first steps on projects.
