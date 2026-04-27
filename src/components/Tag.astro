@@ -1,0 +1,58 @@
+---
+// Atrium · Tag
+// Mono uppercase chip. Use for framework labels, version tags, status.
+//
+// Props:
+//   variant: "default" | "accent" | "solid" | "positive" | "warning" | "critical"
+
+interface Props {
+  variant?: 'default' | 'accent' | 'solid' | 'positive' | 'warning' | 'critical';
+}
+const { variant = 'default' } = Astro.props;
+---
+<span class:list={['atrium-tag', `atrium-tag--${variant}`]}>
+  <slot />
+</span>
+
+<style>
+  .atrium-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-family: var(--atrium-font-mono);
+    font-size: 11px;
+    color: var(--atrium-fg-muted);
+    background: var(--atrium-ink-050);
+    border: 1px solid var(--atrium-border);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .atrium-tag--accent {
+    color: var(--atrium-accent);
+    background: rgba(46, 84, 200, 0.08);
+    border-color: rgba(46, 84, 200, 0.18);
+  }
+  .atrium-tag--solid {
+    color: var(--atrium-paper);
+    background: var(--atrium-ink-900);
+    border-color: var(--atrium-ink-900);
+  }
+  .atrium-tag--positive {
+    color: var(--atrium-positive);
+    background: rgba(21, 128, 61, 0.08);
+    border-color: rgba(21, 128, 61, 0.20);
+  }
+  .atrium-tag--warning {
+    color: var(--atrium-warning);
+    background: rgba(180, 83, 9, 0.08);
+    border-color: rgba(180, 83, 9, 0.20);
+  }
+  .atrium-tag--critical {
+    color: var(--atrium-critical);
+    background: rgba(185, 28, 28, 0.08);
+    border-color: rgba(185, 28, 28, 0.20);
+  }
+</style>

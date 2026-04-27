@@ -1,0 +1,108 @@
+---
+// Atrium · Button
+// Renders <a> if href is set, otherwise <button>.
+//
+// Props:
+//   intent: "primary" | "default" | "secondary" | "ghost" | "danger"
+//   size:   "sm" | "md" | "lg"
+//   href:   string  -> renders an <a>
+//   type:   button type when no href ("button" | "submit" | "reset")
+//   disabled: boolean
+//   showArrow: boolean -> appends a "→" that nudges on hover
+
+interface Props {
+  intent?: 'primary' | 'default' | 'secondary' | 'ghost' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  showArrow?: boolean;
+}
+const {
+  intent = 'default',
+  size = 'md',
+  href,
+  type = 'button',
+  disabled = false,
+  showArrow = false,
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+const baseProps = href
+  ? { href }
+  : { type, disabled };
+---
+<Tag
+  class:list={[
+    'atrium-btn',
+    `atrium-btn--${intent}`,
+    `atrium-btn--${size}`,
+  ]}
+  {...baseProps}
+>
+  <slot name="icon" />
+  <slot />
+  {showArrow && <span class="atrium-btn__arrow" aria-hidden="true">→</span>}
+</Tag>
+
+<style>
+  .atrium-btn {
+    --btn-fg: var(--atrium-paper);
+    --btn-bg: var(--atrium-ink-900);
+    --btn-bd: var(--atrium-ink-900);
+    --btn-bg-hover: var(--atrium-ink-700);
+    appearance: none;
+    border: 1px solid var(--btn-bd);
+    background: var(--btn-bg);
+    color: var(--btn-fg);
+    font-family: var(--atrium-font-sans);
+    font-weight: 500;
+    font-size: var(--atrium-fs-14);
+    padding: 10px 16px;
+    border-radius: var(--atrium-r-md);
+    cursor: pointer;
+    line-height: 1;
+    letter-spacing: -0.005em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: transform 0.05s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .atrium-btn:hover { background: var(--btn-bg-hover); border-color: var(--btn-bg-hover); }
+  .atrium-btn:active { transform: translateY(1px); }
+  .atrium-btn:focus-visible { outline: 2px solid var(--atrium-accent-bright); outline-offset: 2px; }
+
+  .atrium-btn--primary {
+    --btn-bg: var(--atrium-accent);
+    --btn-bd: var(--atrium-accent);
+    --btn-bg-hover: var(--atrium-indigo-700);
+  }
+  .atrium-btn--secondary {
+    --btn-bg: transparent;
+    --btn-fg: var(--atrium-fg);
+    --btn-bd: var(--atrium-border-strong);
+    --btn-bg-hover: var(--atrium-ink-050);
+  }
+  .atrium-btn--ghost {
+    --btn-bg: transparent;
+    --btn-fg: var(--atrium-fg);
+    --btn-bd: transparent;
+    --btn-bg-hover: var(--atrium-ink-050);
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .atrium-btn--danger {
+    --btn-bg: var(--atrium-critical);
+    --btn-bd: var(--atrium-critical);
+    --btn-bg-hover: #931515;
+  }
+
+  .atrium-btn--sm { font-size: var(--atrium-fs-13); padding: 7px 12px; border-radius: var(--atrium-r-sm); }
+  .atrium-btn--lg { font-size: var(--atrium-fs-16); padding: 14px 22px; }
+
+  .atrium-btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+
+  .atrium-btn__arrow { transition: transform 0.2s ease; display: inline-block; }
+  .atrium-btn:hover .atrium-btn__arrow { transform: translateX(2px); }
+</style>

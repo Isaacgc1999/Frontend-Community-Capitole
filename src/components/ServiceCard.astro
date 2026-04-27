@@ -1,0 +1,74 @@
+---
+// Atrium · ServiceCard
+// Solutions index card: icon · title · 18-word lead · forward link.
+//
+// Props:
+//   title: string
+//   href:  string
+//   more:  string  (link label, default "Read more")
+//
+// Slots:
+//   icon  - small svg/icon for the badge
+//   tags  - one or more <Tag> components
+//   default - body copy
+
+interface Props {
+  title: string;
+  href?: string;
+  more?: string;
+}
+const { title, href = '#', more = 'Read more' } = Astro.props;
+---
+<a class="atrium-card-service" href={href}>
+  <div class="icon"><slot name="icon" /></div>
+  <h4>{title}</h4>
+  <p><slot /></p>
+  <div class="tags"><slot name="tags" /></div>
+  <span class="more">{more} →</span>
+</a>
+
+<style>
+  .atrium-card-service {
+    background: var(--atrium-bg-elev);
+    border: 1px solid var(--atrium-border);
+    border-radius: var(--atrium-r-md);
+    padding: var(--atrium-s-6);
+    display: grid;
+    gap: var(--atrium-s-4);
+    color: var(--atrium-fg);
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+  }
+  .atrium-card-service:hover { border-color: var(--atrium-ink-300); }
+
+  .atrium-card-service .icon {
+    width: 44px; height: 44px;
+    border-radius: var(--atrium-r-sm);
+    background: var(--atrium-ink-900);
+    color: var(--atrium-paper);
+    display: grid; place-items: center;
+  }
+  .atrium-card-service h4 {
+    font-size: var(--atrium-fs-18);
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .atrium-card-service p {
+    margin: 0;
+    color: var(--atrium-fg-muted);
+    font-size: var(--atrium-fs-14);
+  }
+  .atrium-card-service .tags {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .atrium-card-service .tags:empty { display: none; }
+  .atrium-card-service .more {
+    margin-top: var(--atrium-s-2);
+    font-family: var(--atrium-font-mono);
+    font-size: var(--atrium-fs-12);
+    color: var(--atrium-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+</style>

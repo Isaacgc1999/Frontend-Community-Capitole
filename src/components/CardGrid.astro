@@ -1,0 +1,57 @@
+---
+// Atrium · CardGrid
+// Responsive grid layout for <Card> (or any card-shaped child).
+// Replaces Starlight's built-in <CardGrid>.
+//
+// Props:
+//   columns: number — desired columns at full width (default: 2)
+//                     The grid auto-collapses on narrow viewports.
+//   stagger: boolean — alternate vertical offset for an editorial feel (default: false)
+//   gap:     "sm" | "md" | "lg" — gap between cards (default "md")
+
+interface Props {
+  columns?: number;
+  stagger?: boolean;
+  gap?: 'sm' | 'md' | 'lg';
+}
+const { columns = 2, stagger = false, gap = 'md' } = Astro.props;
+const min = Math.max(220, Math.floor(560 / Math.max(columns, 1)));
+---
+<div
+  class:list={['atrium-card-grid', stagger && 'is-stagger', `gap-${gap}`]}
+  style={`--atrium-card-min: ${min}px; --atrium-card-cols: ${columns};`}
+>
+  <slot />
+</div>
+
+<style>
+  .atrium-card-grid {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(var(--atrium-card-min), 100%), 1fr)
+    );
+    gap: var(--atrium-s-4);
+    margin: var(--atrium-s-6) 0;
+    align-items: stretch;
+  }
+
+  .atrium-card-grid.gap-sm { gap: var(--atrium-s-3); }
+  .atrium-card-grid.gap-md { gap: var(--atrium-s-4); }
+  .atrium-card-grid.gap-lg { gap: var(--atrium-s-6); }
+
+  /* Children stretch to fill their cell */
+  .atrium-card-grid > :global(*) {
+    height: 100%;
+  }
+
+  /* Subtle editorial stagger — even-indexed cards sit 12px lower */
+  .atrium-card-grid.is-stagger > :global(*:nth-child(even)) {
+    transform: translateY(12px);
+  }
+  @media (max-width: 720px) {
+    .atrium-card-grid.is-stagger > :global(*:nth-child(even)) {
+      transform: none;
+    }
+  }
+</style>

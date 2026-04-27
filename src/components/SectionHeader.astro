@@ -1,0 +1,59 @@
+---
+// Atrium · SectionHeader
+// Two-column heading block: numbered kicker on the left, title + blurb on the right.
+//
+// Props:
+//   num:    string   e.g. "01"
+//   kicker: string   e.g. "Foundations"
+//   title:  string   the headline
+
+interface Props {
+  num: string;
+  kicker: string;
+  title: string;
+}
+const { num, kicker, title } = Astro.props;
+---
+<header class="atrium-sec-head">
+  <div>
+    <div class="atrium-sec-id">
+      <span class="num">{num}</span>{kicker}
+    </div>
+    <h2 class="atrium-sec-title">{title}</h2>
+  </div>
+  <div class="atrium-sec-blurb"><slot /></div>
+</header>
+
+<style>
+  .atrium-sec-head {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--atrium-s-12);
+    margin-bottom: var(--atrium-s-10);
+  }
+  .atrium-sec-id {
+    font-family: var(--atrium-font-mono);
+    font-size: var(--atrium-fs-12);
+    color: var(--atrium-fg-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .atrium-sec-id .num { color: var(--atrium-accent); margin-right: 8px; }
+  .atrium-sec-title {
+    font-size: var(--atrium-fs-36);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    margin: var(--atrium-s-2) 0 0;
+    text-wrap: balance;
+  }
+  .atrium-sec-blurb {
+    font-size: var(--atrium-fs-16);
+    color: var(--atrium-fg-muted);
+    max-width: 60ch;
+  }
+
+  @media (max-width: 1024px) {
+    .atrium-sec-head { grid-template-columns: 1fr; gap: var(--atrium-s-3); }
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+// Atrium · IndustryCard
+// Dark surface with a geometric pattern header.
+//
+// Props:
+//   index:   string   e.g. "01"
+//   kicker:  string   e.g. "financial services"
+//   title:   string
+//   pattern: "orbit" | "facet" | "trend" | "grid"
+import Pattern from './Pattern.astro';
+
+interface Props {
+  index: string;
+  kicker: string;
+  title: string;
+  pattern?: 'orbit' | 'facet' | 'trend' | 'grid';
+}
+const { index, kicker, title, pattern = 'orbit' } = Astro.props;
+---
+<article class="atrium-card-industry">
+  <div class="pat">
+    <Pattern kind={pattern} dark />
+  </div>
+  <div class="num">{index} / {kicker}</div>
+  <h4>{title}</h4>
+  <p><slot /></p>
+</article>
+
+<style>
+  .atrium-card-industry {
+    background: var(--atrium-ink-900);
+    color: var(--atrium-paper);
+    border-radius: var(--atrium-r-md);
+    padding: var(--atrium-s-6);
+    display: grid;
+    gap: var(--atrium-s-3);
+    grid-template-rows: 120px auto auto auto;
+    overflow: hidden;
+  }
+  .pat {
+    background: var(--atrium-ink-800);
+    border: 1px solid var(--atrium-ink-700);
+    border-radius: var(--atrium-r-sm);
+    overflow: hidden;
+    display: grid;
+  }
+  .num {
+    font-family: var(--atrium-font-mono);
+    font-size: var(--atrium-fs-12);
+    color: var(--atrium-ink-300);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  h4 {
+    color: var(--atrium-paper);
+    font-size: var(--atrium-fs-21);
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  p {
+    color: var(--atrium-ink-200);
+    font-size: var(--atrium-fs-14);
+    margin: 0;
+  }
+</style>

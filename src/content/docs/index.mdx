@@ -1,45 +1,33 @@
 ---
 title: Frontend Community
-description: Knowledge base, guidelines and code examples for frontend.
-template: splash
-hero:
-  tagline: We share knowledge, practices and code examples across frameworks and languages.
-  actions:
-    - text: Get started
-      link: /docs/
-      icon: right-arrow
-      variant: primary
-    - text: View on GitHub
-      link: https://github.com/IsaacGarcia-Capitole/Frontend-Community-Capitole
-      icon: external
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import Card from '../../components/Card.astro';
+import CardGrid from '../../components/CardGrid.astro';
 
 ## Explore by framework
-
 <CardGrid stagger>
-  <Card title="Angular" icon="seti:angular">
+  <Card title="Angular">
     Guidelines, architecture, components and examples in Angular.
     [Go to Angular](/angular/)
   </Card>
-  <Card title="React" icon="seti:react">
+  <Card title="React">
     Patterns, state management and examples in React.
     [Go to React](/react/)
   </Card>
-  <Card title="Vue" icon="seti:vue">
+  <Card title="Vue">
     Guidelines, composables and examples in Vue.
     [Go to Vue](/vue/)
   </Card>
-  <Card title="Others" icon="puzzle">
+  <Card title="Others">
     Svelte, Web Components and various experiments.
     [Go to Others](/others/)
   </Card>
-  <Card title="Shared" icon="setting">
+  <Card title="Shared">
     Cross-cutting best practices: performance, accessibility, testing, etc.
     [Go to Shared](/shared/)
   </Card>
-  <Card title="Docs" icon="open-book">
+  <Card title="Docs">
     Onboarding, decisions (ADRs) and glossary.
     [Go to Docs](/docs/)
   </Card>
