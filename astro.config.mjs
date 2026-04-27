@@ -6,6 +6,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Frontend Community",
+      customCss: ['./src/styles/atrium.css'],
       description:
         "Knowledge base, guidelines and code examples across frontend frameworks and languages.",
       defaultLocale: "root",
