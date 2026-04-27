@@ -71,13 +71,33 @@ You can contribute by:
 
 ## 🧭 Repository structure
 
+This repository is an [Astro](https://astro.build/) site powered by
+[Starlight](https://starlight.astro.build/). All documentation and code
+examples live as Markdown / MDX inside `src/content/docs/`.
+
 ```text
-/docs           → Guidelines, standards, decisions
-/patterns       → Reusable patterns and examples
-/components     → Shared UI components (if applicable)
-/experiments    → PoCs and explorations
-/resources      → Learning materials and references
+src/content/docs/
+├── index.mdx              → Landing page
+├── docs/                  → Onboarding, ADRs, glossary
+├── angular/               → Guidelines, architecture, examples in Angular
+├── react/                 → Guidelines, architecture, examples in React
+├── vue/                   → Guidelines, architecture, examples in Vue
+├── others/                → Svelte, Web Components, experiments
+└── shared/                → Cross-cutting topics (a11y, perf, testing, …)
 ```
+
+## 🛠️ Local development
+
+```bash
+npm install
+npm run dev      # start the dev server at http://localhost:4321
+npm run build    # build the static site to ./dist
+npm run preview  # preview the production build locally
+```
+
+To add a new example, create a `.md` or `.mdx` file inside the matching
+folder under `src/content/docs/`. The sidebar is auto-generated from the
+folder structure, so the page will appear automatically.
 
 ---
 

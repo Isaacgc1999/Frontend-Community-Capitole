@@ -1,0 +1,46 @@
+---
+title: Frontend Community
+description: Base de conocimiento, guidelines y ejemplos de código para frontend.
+template: splash
+hero:
+  tagline: Compartimos conocimiento, prácticas y ejemplos de código entre frameworks y lenguajes.
+  actions:
+    - text: Empezá por acá
+      link: /docs/
+      icon: right-arrow
+      variant: primary
+    - text: Ver en GitHub
+      link: https://github.com/nujovich/frontend-community-capitole
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Explorar por framework
+
+<CardGrid stagger>
+  <Card title="Angular" icon="seti:angular">
+    Guidelines, arquitectura, componentes y ejemplos en Angular.
+    [Ir a Angular](/angular/)
+  </Card>
+  <Card title="React" icon="seti:react">
+    Patrones, state management y ejemplos en React.
+    [Ir a React](/react/)
+  </Card>
+  <Card title="Vue" icon="seti:vue">
+    Guidelines, composables y ejemplos en Vue.
+    [Ir a Vue](/vue/)
+  </Card>
+  <Card title="Otros" icon="puzzle">
+    Svelte, Web Components y experimentos varios.
+    [Ir a Otros](/others/)
+  </Card>
+  <Card title="Compartido" icon="setting">
+    Best practices transversales: performance, accesibilidad, testing, etc.
+    [Ir a Compartido](/shared/)
+  </Card>
+  <Card title="Docs" icon="open-book">
+    Onboarding, decisiones (ADRs) y glosario.
+    [Ir a Docs](/docs/)
+  </Card>
+</CardGrid>
