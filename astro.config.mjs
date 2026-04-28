@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
 export default defineConfig({
-  site: "https://nujovich.github.io/frontend-community-capitole",
+  site: "https://github.com/IsaacGarcia-Capitole/Frontend-Community-Capitole",
   integrations: [
     starlight({
       title: "Frontend Community",
@@ -17,7 +17,7 @@ export default defineConfig({
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/nujovich/frontend-community-capitole",
+          href: "https://github.com/IsaacGarcia-Capitole/Frontend-Community-Capitole",
         },
       ],
       sidebar: [
@@ -28,16 +28,16 @@ export default defineConfig({
         {
           label: "Docs",
           items: [
-            { label: "Introducción", link: "/docs/" },
+            { label: "Introduction", link: "/docs/" },
             { label: "Onboarding", autogenerate: { directory: "docs/onboarding" } },
-            { label: "Decisiones (ADRs)", autogenerate: { directory: "docs/decisions" } },
-            { label: "Glosario", autogenerate: { directory: "docs/glossary" } },
+            { label: "Decisions (ADRs)", autogenerate: { directory: "docs/decisions" } },
+            { label: "Glossary", autogenerate: { directory: "docs/glossary" } },
           ],
         },
         {
           label: "Angular",
           items: [
-            { label: "Introducción", link: "/angular/" },
+            { label: "Introduction", link: "/angular/" },
             { label: "Guidelines", autogenerate: { directory: "angular/guidelines" } },
             { label: "Architecture", autogenerate: { directory: "angular/architecture" } },
             { label: "Components", autogenerate: { directory: "angular/components" } },
@@ -49,7 +49,7 @@ export default defineConfig({
         {
           label: "React",
           items: [
-            { label: "Introducción", link: "/react/" },
+            { label: "Introduction", link: "/react/" },
             { label: "Guidelines", autogenerate: { directory: "react/guidelines" } },
             { label: "Architecture", autogenerate: { directory: "react/architecture" } },
             { label: "Components", autogenerate: { directory: "react/components" } },
@@ -61,7 +61,7 @@ export default defineConfig({
         {
           label: "Vue",
           items: [
-            { label: "Introducción", link: "/vue/" },
+            { label: "Introduction", link: "/vue/" },
             { label: "Guidelines", autogenerate: { directory: "vue/guidelines" } },
             { label: "Architecture", autogenerate: { directory: "vue/architecture" } },
             { label: "Components", autogenerate: { directory: "vue/components" } },
@@ -71,18 +71,18 @@ export default defineConfig({
           ],
         },
         {
-          label: "Otros",
+          label: "Others",
           items: [
-            { label: "Introducción", link: "/others/" },
+            { label: "Introduction", link: "/others/" },
             { label: "Svelte", autogenerate: { directory: "others/svelte" } },
             { label: "Web components", autogenerate: { directory: "others/web-components" } },
-            { label: "Experimentos", autogenerate: { directory: "others/experiments" } },
+            { label: "Experiments", autogenerate: { directory: "others/experiments" } },
           ],
         },
         {
-          label: "Compartido",
+          label: "Shared",
           items: [
-            { label: "Introducción", link: "/shared/" },
+            { label: "Introduction", link: "/shared/" },
             { label: "Best practices", autogenerate: { directory: "shared/best-practices" } },
             { label: "Performance", autogenerate: { directory: "shared/performance" } },
             { label: "Accessibility", autogenerate: { directory: "shared/accessibility" } },
