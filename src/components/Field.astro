@@ -1,0 +1,67 @@
+---
+// Atrium · Field
+// Wrapper for form controls. Pass an <input>, <select>, or <textarea> as the default slot,
+// optionally with the `atrium-input` / `atrium-select` / `atrium-textarea` classes for styling.
+//
+// Props:
+//   label: string
+//   for:   string  -> id of the inner control
+//   hint:  string  -> small helper text
+//   error: string  -> error message (also styles slotted .atrium-input as invalid via CSS)
+
+interface Props {
+  label: string;
+  for?: string;
+  hint?: string;
+  error?: string;
+}
+const { label, for: htmlFor, hint, error } = Astro.props;
+---
+<div class:list={['atrium-field', error && 'atrium-field--invalid']}>
+  <label for={htmlFor}>{label}</label>
+  <slot />
+  {error && <span class="atrium-field__error">{error}</span>}
+  {!error && hint && <span class="atrium-field__hint">{hint}</span>}
+</div>
+
+<style>
+  .atrium-field { display: grid; gap: 6px; }
+  .atrium-field label {
+    font-size: var(--atrium-fs-13);
+    color: var(--atrium-fg);
+    font-weight: 500;
+  }
+  .atrium-field__hint  { font-size: var(--atrium-fs-12); color: var(--atrium-fg-subtle); }
+  .atrium-field__error { font-size: var(--atrium-fs-12); color: var(--atrium-critical); }
+
+  /* Style any input/select/textarea inside the field that uses these classes. */
+  :global(.atrium-input),
+  :global(.atrium-select),
+  :global(.atrium-textarea) {
+    appearance: none;
+    font-family: var(--atrium-font-sans);
+    font-size: var(--atrium-fs-14);
+    background: var(--atrium-bg-elev);
+    color: var(--atrium-fg);
+    border: 1px solid var(--atrium-border-strong);
+    border-radius: var(--atrium-r-md);
+    padding: 10px 12px;
+    width: 100%;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  :global(.atrium-input:focus),
+  :global(.atrium-select:focus),
+  :global(.atrium-textarea:focus) {
+    outline: none;
+    border-color: var(--atrium-accent);
+    box-shadow: 0 0 0 3px rgba(46, 84, 200, 0.15);
+  }
+  :global(.atrium-textarea) { min-height: 96px; resize: vertical; line-height: 1.55; }
+
+  .atrium-field--invalid :global(.atrium-input),
+  .atrium-field--invalid :global(.atrium-select),
+  .atrium-field--invalid :global(.atrium-textarea) {
+    border-color: var(--atrium-critical);
+    box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.12);
+  }
+</style>

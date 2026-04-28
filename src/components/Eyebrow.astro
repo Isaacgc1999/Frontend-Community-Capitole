@@ -1,0 +1,25 @@
+---
+// Atrium · Eyebrow
+// Mono uppercase label with a leading rule. Place above section titles.
+---
+<span class="atrium-eyebrow"><slot /></span>
+
+<style>
+  .atrium-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--atrium-font-mono);
+    font-size: var(--atrium-fs-12);
+    color: var(--atrium-fg-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .atrium-eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--atrium-ink-400);
+    display: inline-block;
+  }
+</style>

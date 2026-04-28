@@ -1,0 +1,44 @@
+---
+// Atrium · StatRow
+// Three-up stat strip — value + label.
+//
+// Props:
+//   items: Array<{ value: string; label: string }>
+
+interface Stat { value: string; label: string; }
+interface Props { items: Stat[]; }
+const { items } = Astro.props;
+---
+<div class="atrium-stats">
+  {items.map((s) => (
+    <div class="stat">
+      <div class="v">{s.value}</div>
+      <div class="l">{s.label}</div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .atrium-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--atrium-s-3);
+    border-top: 1px solid var(--atrium-border);
+    padding-top: var(--atrium-s-4);
+  }
+  .stat .v {
+    font-size: var(--atrium-fs-25);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .stat .l {
+    font-family: var(--atrium-font-mono);
+    font-size: 11px;
+    color: var(--atrium-fg-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  @media (max-width: 640px) {
+    .atrium-stats { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,80 @@
+---
+// Atrium · BrandMark
+// Atrium "A" mark with optional "made for capitole" attribution.
+//
+// Props:
+//   withCapitole: boolean
+//   tag: string — the line after the brand name (e.g. "Frontend Docs · v0.4.0")
+
+interface Props {
+  withCapitole?: boolean;
+  tag?: string;
+}
+const { withCapitole = true, tag = 'Frontend Docs' } = Astro.props;
+---
+<div class="atrium-brand">
+  <span class="mark">A</span>
+  <span class="name">Atrium</span>
+  {tag && <span class="tag">{tag}</span>}
+  {withCapitole && (
+    <span class="by" aria-label="Made for Capitole">
+      <span class="by-label">made for</span>
+      <svg class="capitole" viewBox="0 0 120 22" width="84" height="16" aria-hidden="true">
+        <g fill="currentColor">
+          <rect x="0" y="3" width="3" height="16" />
+          <rect x="0" y="3" width="14" height="3" />
+        </g>
+        <text x="20" y="17" font-family="Inter, sans-serif" font-size="14" font-weight="600" letter-spacing="0.02em" fill="currentColor">capitole</text>
+      </svg>
+    </span>
+  )}
+</div>
+
+<style>
+  .atrium-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--atrium-fg);
+  }
+  .mark {
+    width: 28px; height: 28px;
+    display: grid; place-items: center;
+    background: var(--atrium-ink-900);
+    color: var(--atrium-paper);
+    border-radius: 6px;
+    font-family: var(--atrium-font-mono);
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .name { font-size: var(--atrium-fs-15); }
+  .tag {
+    font-size: var(--atrium-fs-12);
+    color: var(--atrium-fg-subtle);
+    margin-left: 8px;
+    padding-left: 8px;
+    border-left: 1px solid var(--atrium-border);
+  }
+  .by {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 1px solid var(--atrium-border);
+    color: var(--atrium-fg-muted);
+  }
+  .by-label {
+    font-family: var(--atrium-font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--atrium-fg-subtle);
+  }
+  .capitole { display: block; }
+  @media (max-width: 1024px) {
+    .by { display: none; }
+  }
+</style>

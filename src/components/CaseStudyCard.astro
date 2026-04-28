@@ -1,0 +1,108 @@
+---
+// Atrium · CaseStudyCard
+// Wide case-study row: tags · headline · summary · stats · visual.
+//
+// Props:
+//   title:   string
+//   summary: string
+//   stats:   Array<{ value: string; label: string }>
+//   meta:    string  e.g. "12 min read · last edited 2 days ago"
+//   ctaLabel: string (default "Read the write-up")
+//   ctaHref:  string
+//   pattern: "orbit" | "facet" | "trend" | "grid"
+//
+// Slots:
+//   tags  - one or more <Tag> components
+import Pattern from './Pattern.astro';
+import StatRow from './StatRow.astro';
+import Button from './Button.astro';
+
+interface Stat { value: string; label: string; }
+interface Props {
+  title: string;
+  summary: string;
+  stats: Stat[];
+  meta?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  pattern?: 'orbit' | 'facet' | 'trend' | 'grid';
+}
+const {
+  title,
+  summary,
+  stats,
+  meta,
+  ctaLabel = 'Read the write-up',
+  ctaHref = '#',
+  pattern = 'orbit',
+} = Astro.props;
+---
+<article class="atrium-card-case">
+  <div class="body">
+    <div class="tags"><slot name="tags" /></div>
+    <div>
+      <h3>{title}</h3>
+      <p>{summary}</p>
+    </div>
+    <StatRow items={stats} />
+    <div class="cta">
+      <Button intent="secondary" size="sm" href={ctaHref} showArrow>{ctaLabel}</Button>
+      {meta && <span class="meta">{meta}</span>}
+    </div>
+  </div>
+  <div class="visual">
+    <Pattern kind={pattern} dark />
+  </div>
+</article>
+
+<style>
+  .atrium-card-case {
+    background: var(--atrium-bg-elev);
+    border: 1px solid var(--atrium-border);
+    border-radius: var(--atrium-r-md);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    min-height: 280px;
+  }
+  .body {
+    padding: var(--atrium-s-8);
+    display: grid;
+    gap: var(--atrium-s-4);
+    align-content: space-between;
+  }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tags:empty { display: none; }
+  h3 {
+    font-size: var(--atrium-fs-25);
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+  }
+  p {
+    color: var(--atrium-fg-muted);
+    margin: var(--atrium-s-2) 0 0;
+    font-size: var(--atrium-fs-15);
+  }
+  .cta {
+    display: flex;
+    align-items: center;
+    gap: var(--atrium-s-3);
+    flex-wrap: wrap;
+  }
+  .meta {
+    font-family: var(--atrium-font-mono);
+    font-size: var(--atrium-fs-12);
+    color: var(--atrium-fg-subtle);
+  }
+  .visual {
+    background: var(--atrium-ink-900);
+    display: grid;
+    place-items: stretch;
+  }
+  @media (max-width: 1024px) {
+    .atrium-card-case { grid-template-columns: 1fr; }
+    .visual { min-height: 200px; }
+  }
+</style>
