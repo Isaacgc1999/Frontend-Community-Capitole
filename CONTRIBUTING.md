@@ -1,4 +1,4 @@
-# Contributing
+# Contributing to This Community
 
 Thank you for contributing to the Frontend Community repository.
 
