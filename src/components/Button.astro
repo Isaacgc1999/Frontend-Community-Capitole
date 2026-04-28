@@ -105,4 +105,34 @@ const baseProps = href
 
   .atrium-btn__arrow { transition: transform 0.2s ease; display: inline-block; }
   .atrium-btn:hover .atrium-btn__arrow { transform: translateX(2px); }
+
+  /* dark mode */
+  :global([data-theme='dark']) .atrium-btn {
+    --btn-fg:       var(--atrium-ink-100);
+    --btn-bg:       var(--atrium-ink-700);
+    --btn-bd:       var(--atrium-ink-600);
+    --btn-bg-hover: var(--atrium-ink-600);
+  }
+  :global([data-theme='dark']) .atrium-btn--primary {
+    --btn-bg:       var(--atrium-blue-500);
+    --btn-bd:       var(--atrium-blue-500);
+    --btn-bg-hover: var(--atrium-indigo-500);
+  }
+  :global([data-theme='dark']) .atrium-btn--secondary {
+    --btn-fg:       var(--atrium-ink-100);
+    --btn-bg:       transparent;
+    --btn-bd:       var(--atrium-ink-500);
+    --btn-bg-hover: var(--atrium-ink-700);
+  }
+  :global([data-theme='dark']) .atrium-btn--ghost {
+    --btn-fg:       var(--atrium-ink-100);
+    --btn-bg:       transparent;
+    --btn-bd:       transparent;
+    --btn-bg-hover: var(--atrium-ink-700);
+  }
+  :global([data-theme='dark']) .atrium-btn--danger {
+    --btn-bg:       #DC2626;
+    --btn-bd:       #DC2626;
+    --btn-bg-hover: var(--atrium-critical);
+  }
 </style>
