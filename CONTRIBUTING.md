@@ -8,6 +8,7 @@ Thank you for contributing to the Frontend Community repository.
 - Follow existing structure and naming conventions
 - Write documentation in English
 - Prefer practical examples over theory
+- Provide every example in **both English and Spanish** (code comments, UI strings and sample data) so the community can use them regardless of preferred language
 
 ## Pull Requests
 
