@@ -9,6 +9,9 @@ Thank you for contributing to the Frontend Community repository.
 - Write documentation in English
 - Prefer practical examples over theory
 - Provide every example in **both English and Spanish** (code comments, UI strings and sample data) so the community can use them regardless of preferred language
+  - Reference example: [React i18n with `react-i18next`](src/content/docs/react/examples/i18n.md)
+  - Use the [Starlight i18n configuration](https://starlight.astro.build/guides/i18n/) so translated pages appear in the language dropdown
+  - Astro routing reference: [Internationalization (i18n) routing](https://docs.astro.build/en/guides/internationalization/)
 
 ## Pull Requests
 

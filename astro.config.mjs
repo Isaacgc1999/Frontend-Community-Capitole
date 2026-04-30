@@ -12,6 +12,7 @@ export default defineConfig({
       defaultLocale: "root",
       locales: {
         root: { label: "English", lang: "en" },
+        es: { label: "Español", lang: "es" },
       },
       social: [
         {

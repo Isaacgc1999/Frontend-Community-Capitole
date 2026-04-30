@@ -1,0 +1,39 @@
+---
+title: Frontend Community
+---
+
+import Card from '../../../components/Card.astro';
+import CardGrid from '../../../components/CardGrid.astro';
+import Hero from '../../../components/Hero.astro';
+
+<Hero
+  tagline="Una colección de buenas prácticas, patrones y ejemplos para desarrollo frontend en Capitole."
+/> 
+
+## Explora por framework
+<CardGrid stagger>
+  <Card title="Angular">
+    Guías, arquitectura, componentes y ejemplos en Angular.
+    [Ir a Angular](/es/angular/)
+  </Card>
+  <Card title="React">
+    Patrones, gestión de estado y ejemplos en React.
+    [Ir a React](/es/react/)
+  </Card>
+  <Card title="Vue">
+    Guías, composables y ejemplos en Vue.
+    [Ir a Vue](/es/vue/)
+  </Card>
+  <Card title="Others">
+    Svelte, Web Components y experimentos varios.
+    [Ir a Others](/es/others/)
+  </Card>
+  <Card title="Shared">
+    Buenas prácticas transversales: rendimiento, accesibilidad, testing, etc.
+    [Ir a Shared](/es/shared/)
+  </Card>
+  <Card title="Docs">
+    Onboarding, decisiones (ADRs) y glosario.
+    [Ir a Docs](/es/docs/)
+  </Card>
+</CardGrid>
