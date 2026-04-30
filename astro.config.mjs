@@ -89,6 +89,7 @@ export default defineConfig({
             { label: "Testing", autogenerate: { directory: "shared/testing" } },
             { label: "Security", autogenerate: { directory: "shared/security" } },
             { label: "Tooling", autogenerate: { directory: "shared/tooling" } },
+            { label: "Internationalization (i18n)", autogenerate: { directory: "shared/i18n" } },
           ],
         },
       ],
