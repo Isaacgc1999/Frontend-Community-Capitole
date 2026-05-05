@@ -2,11 +2,12 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
 export default defineConfig({
-  site: "https://github.com/IsaacGarcia-Capitole/Frontend-Community-Capitole",
+  site: "https://Isaacgc1999.github.io",
+  base: "/Frontend-Community-Capitole/",
   integrations: [
     starlight({
       title: "Frontend Community",
-      customCss: ['./src/styles/atrium.css'],
+      customCss: ["./src/styles/atrium.css"],
       description:
         "Knowledge base, guidelines and code examples across frontend frameworks and languages.",
       defaultLocale: "root",
@@ -17,7 +18,7 @@ export default defineConfig({
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/IsaacGarcia-Capitole/Frontend-Community-Capitole",
+          href: "https://github.com/Isaacgc1999/Frontend-Community-Capitole",
         },
       ],
       sidebar: [
