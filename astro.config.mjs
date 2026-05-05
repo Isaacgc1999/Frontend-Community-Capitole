@@ -13,6 +13,7 @@ export default defineConfig({
       defaultLocale: "root",
       locales: {
         root: { label: "English", lang: "en" },
+        es: { label: "Español", lang: "es" },
       },
       social: [
         {
@@ -90,6 +91,7 @@ export default defineConfig({
             { label: "Testing", autogenerate: { directory: "shared/testing" } },
             { label: "Security", autogenerate: { directory: "shared/security" } },
             { label: "Tooling", autogenerate: { directory: "shared/tooling" } },
+            { label: "Internationalization (i18n)", autogenerate: { directory: "shared/i18n" } },
           ],
         },
       ],

@@ -11,3 +11,4 @@ Cross-cutting resources that apply regardless of the framework:
 - Testing
 - Security
 - Tooling
+- Internationalization (i18n)

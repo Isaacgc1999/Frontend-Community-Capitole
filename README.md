@@ -95,6 +95,8 @@ npm run build    # build the static site to ./dist
 npm run preview  # preview the production build locally
 ```
 
+> ⚠️ **Search is only available in production builds.** Starlight's search index isn't generated during `npm run dev`. To test search locally, run `npm run build` followed by `npm run preview`.
+
 ---
 
 ## 📝 How to add documentation or examples
