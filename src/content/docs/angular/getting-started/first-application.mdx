@@ -1,0 +1,470 @@
+---
+title: Your First Angular Application
+description: Build your first Angular application step-by-step and understand the core concepts.
+sidebar.order: 3
+---
+
+import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Overview
+
+In this guide, you'll create a simple but complete Angular application featuring:
+
+- A component that displays a list of items
+- Interactive user input
+- Data binding
+- Event handling
+- Services
+
+## Project Structure
+
+After running `ng new`, your application structure looks like this:
+
+```
+src/
+├── app/
+│   ├── app.component.ts         # Root component
+│   ├── app.component.html       # Root template
+│   ├── app.component.scss       # Root styles
+│   ├── app.component.spec.ts    # Root tests
+│   └── app.routes.ts            # Route configuration
+├── main.ts                       # Entry point
+├── index.html                    # HTML shell
+└── styles.scss                   # Global styles
+```
+
+## Understanding the Root Component
+
+The `AppComponent` is your application's root:
+
+```ts
+// src/app/app.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',           // HTML tag name
+  standalone: true,               // Standalone component (no NgModule needed)
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
+})
+export class AppComponent {
+  title = 'My First Angular App';
+}
+```
+
+### Component Decorator Properties
+
+| Property | Purpose |
+|---|---|
+| `selector` | HTML tag name for this component |
+| `standalone` | Component doesn't depend on NgModule (Angular 18+) |
+| `template` or `templateUrl` | Component's HTML (inline or external file) |
+| `styles` or `styleUrl` | Component's CSS (inline or external file) |
+
+## Step 1: Create Your First Component
+
+Generate a component for displaying a list of items:
+
+```bash
+ng generate component components/item-list
+```
+
+This creates:
+
+```
+src/app/components/item-list/
+├── item-list.component.ts
+├── item-list.component.html
+├── item-list.component.scss
+└── item-list.component.spec.ts
+```
+
+## Step 2: Define the Component Logic
+
+Edit `item-list.component.ts`:
+
+```ts
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-item-list',
+  standalone: true,
+  imports: [CommonModule],        // Import required modules
+  templateUrl: './item-list.component.html',
+  styleUrl: './item-list.component.scss'
+})
+export class ItemListComponent {
+  // Component data
+  items = [
+    { id: 1, name: 'Learn Angular', completed: false },
+    { id: 2, name: 'Build a component', completed: false },
+    { id: 3, name: 'Master services', completed: true }
+  ];
+
+  // Component methods
+  toggleItem(id: number): void {
+    const item = this.items.find(i => i.id === id);
+    if (item) {
+      item.completed = !item.completed;
+    }
+  }
+
+  addItem(name: string): void {
+    if (name.trim()) {
+      const newId = Math.max(...this.items.map(i => i.id), 0) + 1;
+      this.items.push({ id: newId, name, completed: false });
+    }
+  }
+
+  removeItem(id: number): void {
+    this.items = this.items.filter(item => item.id !== id);
+  }
+}
+```
+
+<Aside type="tip">
+Every Angular component must be declared in the `imports` array if it's standalone. CommonModule provides directives like `*ngIf`, `*ngFor`, etc.
+</Aside>
+
+## Step 3: Create the Template
+
+Edit `item-list.component.html`:
+
+```html
+<div class="item-list">
+  <h2>My Items</h2>
+
+  <!-- Input form -->
+  <div class="add-item">
+    <input
+      #itemInput
+      type="text"
+      placeholder="Add a new item"
+      (keyup.enter)="addItem(itemInput.value); itemInput.value = ''"
+    />
+    <button (click)="addItem(itemInput.value); itemInput.value = ''">
+      Add
+    </button>
+  </div>
+
+  <!-- Items list -->
+  <ul *ngIf="items.length > 0; else noItems">
+    <li *ngFor="let item of items" [class.completed]="item.completed">
+      <input
+        type="checkbox"
+        [checked]="item.completed"
+        (change)="toggleItem(item.id)"
+      />
+      <span>{{ item.name }}</span>
+      <button class="delete" (click)="removeItem(item.id)">
+        Delete
+      </button>
+    </li>
+  </ul>
+
+  <!-- Empty state -->
+  <ng-template #noItems>
+    <p class="empty">No items yet. Add one to get started!</p>
+  </ng-template>
+</div>
+```
+
+### Template Syntax Breakdown
+
+| Syntax | Purpose |
+|---|---|
+| `{{ item.name }}` | Interpolation (data binding) |
+| `[class.completed]="item.completed"` | Property binding |
+| `(click)="removeItem(item.id)"` | Event binding |
+| `[(ngModel)]="item.name"` | Two-way data binding |
+| `*ngIf="items.length > 0"` | Structural directive (if) |
+| `*ngFor="let item of items"` | Structural directive (loop) |
+| `#itemInput` | Template reference variable |
+
+<Aside type="tip">
+Template reference variables like `#itemInput` allow you to access DOM elements directly in your component logic.
+</Aside>
+
+## Step 4: Add Styles
+
+Edit `item-list.component.scss`:
+
+```scss
+.item-list {
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+
+  h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .add-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+
+      &:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+      }
+    }
+
+    button {
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
+
+      &.completed {
+        opacity: 0.6;
+
+        span {
+          text-decoration: line-through;
+          color: #999;
+        }
+      }
+
+      input[type="checkbox"] {
+        cursor: pointer;
+      }
+
+      span {
+        flex: 1;
+      }
+
+      .delete {
+        padding: 4px 8px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+
+        &:hover {
+          background-color: #c82333;
+        }
+      }
+    }
+  }
+
+  .empty {
+    color: #999;
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+  }
+}
+```
+
+## Step 5: Import Component into Root
+
+Update `app.component.ts`:
+
+```ts
+import { Component } from '@angular/core';
+import { ItemListComponent } from './components/item-list/item-list.component';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [ItemListComponent],    // Import your component
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
+})
+export class AppComponent {
+  title = 'My Task Manager';
+}
+```
+
+Update `app.component.html`:
+
+```html
+<div>
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+  <main>
+    <app-item-list></app-item-list>
+  </main>
+</div>
+```
+
+## Step 6: Run Your Application
+
+```bash
+ng serve --open
+```
+
+Your application is now running at `http://localhost:4200/`!
+
+## Core Concepts You Just Learned
+
+### 1. **Component Selector**
+
+The `selector: 'app-item-list'` creates an HTML element `<app-item-list></app-item-list>`.
+
+### 2. **Property Binding**
+
+```html
+<li [class.completed]="item.completed">
+```
+
+Updates the DOM element when the property changes.
+
+### 3. **Event Binding**
+
+```html
+<button (click)="removeItem(item.id)">
+```
+
+Responds to user interactions.
+
+### 4. **Interpolation**
+
+```html
+<span>{{ item.name }}</span>
+```
+
+Displays component data in the template.
+
+### 5. **Structural Directives**
+
+```html
+<li *ngFor="let item of items">
+```
+
+Modifies the DOM structure (repeat elements, conditionals).
+
+### 6. **Template Reference Variables**
+
+```html
+<input #itemInput />
+```
+
+Access DOM elements in your component code.
+
+## Common Patterns
+
+### Two-Way Data Binding
+
+```ts
+// Component
+export class MyComponent {
+  name = 'Angular';
+}
+```
+
+```html
+<!-- Template -->
+<input [(ngModel)]="name" />
+<p>Your name: {{ name }}</p>
+```
+
+<Aside type="danger">
+Two-way binding with `[(ngModel)]` requires `FormsModule` to be imported.
+</Aside>
+
+### Conditional Rendering
+
+```html
+<!-- Show if items exist -->
+<div *ngIf="items.length > 0">
+  <!-- Content -->
+</div>
+
+<!-- Show if items don't exist -->
+<div *ngIf="items.length === 0">
+  No items
+</div>
+
+<!-- Using else template -->
+<div *ngIf="isLoading; else content">
+  Loading...
+</div>
+<ng-template #content>
+  Content loaded
+</ng-template>
+```
+
+### List Rendering
+
+```html
+<!-- Basic loop -->
+<li *ngFor="let item of items">
+  {{ item.name }}
+</li>
+
+<!-- With index -->
+<li *ngFor="let item of items; let i = index">
+  {{ i + 1 }}. {{ item.name }}
+</li>
+
+<!-- With tracking (performance) -->
+<li *ngFor="let item of items; trackBy: trackByItemId">
+  {{ item.name }}
+</li>
+```
+
+```ts
+trackByItemId(index: number, item: Item): number {
+  return item.id;
+}
+```
+
+## Next Steps
+
+Now that you understand the basics:
+
+1. **Create more components** — Break your UI into smaller parts
+2. **Learn about services** — Share data between components
+3. **Explore routing** — Create multi-page applications
+4. **Master forms** — Build complex forms with validation
+5. **Connect to APIs** — Fetch data from backend servers
+
+---
+
+## References
+
+- [Angular Components Guide](https://angular.dev/guide/components)
+- [Template Syntax](https://angular.dev/guide/templates)
+- [Angular Directives](https://angular.dev/guide/directives)
+- [Property and Event Binding](https://angular.dev/guide/binding)

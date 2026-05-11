@@ -40,6 +40,7 @@ export default defineConfig({
           label: "Angular",
           items: [
             { label: "Introduction", link: "/angular/" },
+            { label: "Getting Started", autogenerate: { directory: "angular/getting-started" } },
             { label: "Guidelines", autogenerate: { directory: "angular/guidelines" } },
             { label: "Architecture", autogenerate: { directory: "angular/architecture" } },
             { label: "Components", autogenerate: { directory: "angular/components" } },

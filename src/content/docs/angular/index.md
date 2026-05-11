@@ -5,6 +5,7 @@ description: Guidelines, architecture, components, patterns and examples in Angu
 
 Section dedicated to Angular. Available subsections:
 
+- Getting Started
 - Guidelines
 - Architecture
 - Components
