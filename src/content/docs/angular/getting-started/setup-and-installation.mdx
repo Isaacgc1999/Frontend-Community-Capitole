@@ -1,0 +1,845 @@
+---
+title: Setup and Installation
+description: Step-by-step guide to set up your Angular development environment and create your first project.
+sidebar.order: 2
+---
+
+import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Prerequisites
+
+Before you start, ensure you have the following installed:
+
+- **Node.js** (v18.19 or higher)
+- **npm** (v9 or higher) or **yarn**
+- **A code editor** (VS Code recommended)
+- **Basic knowledge of TypeScript and JavaScript**
+
+<Aside type="tip">
+Check your Node.js and npm versions by running:
+```bash
+node --version
+npm --version
+```
+</Aside>
+
+## Step 1: Install Node.js
+
+Visit [nodejs.org](https://nodejs.org/) and download the LTS (Long-Term Support) version.
+
+After installation, verify:
+
+```bash
+node --version  # Should be v18.19.0 or higher
+npm --version   # Should be v9.0.0 or higher
+```
+
+## Step 2: Install Angular CLI
+
+The Angular CLI is the official command-line tool for creating and managing Angular projects.
+
+```bash
+npm install -g @angular/cli@latest
+```
+
+Verify the installation:
+
+```bash
+ng version
+```
+
+You should see output similar to:
+
+```
+     _                      _                 ____ _     ___
+    / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+   / △ \  | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+  / ___ \ | | | | (_| | | | | | (_| | |      | |___| |___ | |
+ /_/   \_\|_| |_|\__, |_|_|_|_|\__,_|_|       \____|_____|___|
+                |___/
+​
+Angular CLI: 18.0.0
+Node: 18.19.0
+Package Manager: npm 10.2.3
+```
+
+<Aside type="danger">
+Make sure to use `@latest` or specify the version `@18` to get Angular 18. Different versions may have breaking changes.
+</Aside>
+
+## Step 3: Create a New Angular Project
+
+The Angular CLI provides an interactive setup for creating new projects:
+
+```bash
+ng new my-app
+```
+
+The CLI will prompt you with several questions:
+
+<Tabs>
+  <TabItem label="Default Setup (Recommended)">
+    ```
+    ? Which stylesheet format would you like to use?
+    > CSS
+      SCSS  (recommended for large projects)
+      SASS
+      LESS
+
+    ? Do you want to enable Server-Side Rendering (SSR)?
+    > Yes
+      No (recommended for most projects)
+
+    ? Do you want to add Angular routing?
+    > Yes (recommended)
+      No
+    ```
+  </TabItem>
+  <TabItem label="Skip Prompts">
+    ```bash
+    ng new my-app --skip-git --package-manager=npm
+    ```
+  </TabItem>
+</Tabs>
+
+### Project Structure
+
+After creation, your project will look like:
+
+```
+my-app/
+├── src/
+│   ├── app/
+│   │   ├── app.component.ts
+│   │   ├── app.component.html
+│   │   ├── app.component.scss
+│   │   ├── app.component.spec.ts
+│   │   └── app.routes.ts
+│   ├── main.ts                  # Application entry point
+│   ├── styles.scss              # Global styles
+│   └── index.html               # HTML template
+├── angular.json                 # Angular CLI configuration
+├── tsconfig.json               # TypeScript configuration
+├── package.json                # Dependencies
+└── README.md
+```
+
+<Aside type="tip">
+Angular 18 uses **standalone components** by default, which don't require NgModules. This is the modern recommended approach.
+</Aside>
+
+## Step 4: Navigate to Project Directory
+
+```bash
+cd my-app
+```
+
+## Step 5: Start the Development Server
+
+```bash
+ng serve
+```
+
+Or with automatic browser opening:
+
+```bash
+ng serve --open
+```
+
+The application will be available at **http://localhost:4200/**
+
+<Aside type="note">
+The development server includes:
+- Hot reloading (automatic refresh on file changes)
+- Source maps for debugging
+- Development-optimized builds
+</Aside>
+
+## Understanding the Development Server Output
+
+```
+✔ Browser application bundle generation complete.
+
+Initial Chunk Files   | Names         | Raw Size | Estimated Gzip
+main.js             | main         | 234 kB   | 68 kB
+polyfills.js        | polyfills    | 124 kB   | 39 kB
+styles.css          | styles       | 25 kB    | 6 kB
+
+Build at: 2024-05-11T10:30:45.123Z - Hash: abc123def456
+
+Application bundle generation complete. [4.234 seconds]
+
+Watch mode enabled. Watching for file changes...
+````
+
+## Step 6: Edit Your First Component
+
+Open `src/app/app.component.ts`:
+
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: `
+    <h1>Welcome to {{ title }}!</h1>
+  `,
+  styles: [],
+})
+export class AppComponent {
+  title = 'my-app';
+}
+```
+
+Edit the template to see changes instantly:
+
+```ts
+template: `
+  <h1>Hello, Angular 18!</h1>
+  <p>Welcome to your first Angular application</p>
+`
+```
+
+Save the file and watch the browser reload automatically.
+
+## Common Setup Options
+
+### With SCSS (Recommended for Large Projects)
+
+```bash
+ng new my-app --style=scss
+```
+
+### With Routing Enabled
+
+```bash
+ng new my-app --routing
+```
+
+### Without Angular CLI Prompts
+
+```bash
+ng new my-app \
+  --skip-git \
+  --style=scss \
+  --routing \
+  --package-manager=npm
+```
+
+### Skip Installation (Install Later)
+
+```bash
+ng new my-app --skip-install
+cd my-app
+npm install
+```
+
+## Development Commands
+
+Once your project is created, you have several useful commands:
+
+<Tabs>
+  <TabItem label="Development">
+    ```bash
+    # Start development server
+    ng serve
+
+    # With auto-open browser
+    ng serve --open
+
+    # On specific port
+    ng serve --port 4300
+    ```
+  </TabItem>
+  <TabItem label="Building">
+    ```bash
+    # Production build (optimized)
+    ng build
+
+    # Development build
+    ng build --configuration development
+
+    # Build for specific environment
+    ng build --configuration staging
+    ```
+  </TabItem>
+  <TabItem label="Testing">
+    ```bash
+    # Run unit tests
+    ng test
+
+    # With coverage
+    ng test --code-coverage
+
+    # Run E2E tests
+    ng e2e
+    ```
+  </TabItem>
+  <TabItem label="Generating Code">
+    ```bash
+    # Generate component
+    ng generate component components/button
+
+    # Generate service
+    ng generate service services/api
+
+    # Generate directive
+    ng generate directive directives/highlight
+
+    # Short syntax
+    ng g c my-component
+    ng g s my-service
+    ng g d my-directive
+    ```
+  </TabItem>
+</Tabs>
+
+## VS Code Extensions (Recommended)
+
+For a better development experience in VS Code:
+
+1. **Angular Language Service** — Official extension by Angular
+2. **Prettier** — Code formatter
+3. **ESLint** — Linting support
+4. **TypeScript Vue Plugin (Volar)** — Better TypeScript support
+
+Install them via the Extensions marketplace.
+
+## Environment Configuration
+
+Angular supports multiple environments. Edit `angular.json` to add configurations:
+
+```json
+"configurations": {
+  "development": {
+    "budgets": [...],
+    "namedChunks": true
+  },
+  "production": {
+    "budgets": [...],
+    "aot": true,
+    "outputHashing": "all"
+  },
+  "staging": {
+    "budgets": [...],
+    "aot": true
+  }
+}
+```
+
+Build for different environments:
+
+```bash
+ng build --configuration production
+ng build --configuration staging
+```
+
+## Managing Multiple Node Versions with NVM
+
+If you work on multiple projects with different Node.js version requirements, **NVM (Node Version Manager)** allows you to easily switch between versions.
+
+### Installing NVM
+
+#### macOS and Linux
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+```
+
+After installation, close and reopen your terminal, then verify:
+
+```bash
+nvm --version  # Should display version number
+```
+
+#### Windows
+
+Use **nvm-windows** from: https://github.com/coreybutler/nvm-windows/releases
+
+Download the installer and follow the installation instructions.
+
+### Managing Node Versions with NVM
+
+#### List Available Node Versions
+
+```bash
+nvm list-remote  # Show all available versions
+```
+
+#### Install a Specific Node Version
+
+```bash
+nvm install 18.19.0     # Install specific version
+nvm install 20.11.0     # Install another version
+nvm install --lts       # Install latest LTS version
+```
+
+#### List Installed Versions
+
+```bash
+nvm list  # or `nvm ls`
+```
+
+Output example:
+```
+    v16.13.0
+    v18.19.0
+->  v20.11.0  (current)
+    v21.5.0
+```
+
+#### Switch Node Versions
+
+```bash
+nvm use 18.19.0  # Use specific version for current terminal session
+nvm use --lts    # Use latest LTS version
+```
+
+#### Set Default Node Version
+
+```bash
+nvm alias default 18.19.0
+```
+
+#### Use Project-Specific Versions
+
+Create a `.nvmrc` file in your project root:
+
+```
+18.19.0
+```
+
+Then automatically use the correct version:
+
+```bash
+nvm use  # Reads .nvmrc and switches to specified version
+```
+
+<Aside type="tip">
+Add `nvm use` to your shell startup file to automatically load the version specified in `.nvmrc` when you enter the project directory.
+</Aside>
+
+#### Example: Managing Multiple Projects
+
+```bash
+# Project 1 (Angular 18 - needs Node 18)
+cd my-angular-app
+nvm use 18.19.0
+ng serve
+
+# Project 2 (Node backend - needs Node 20)
+cd ../my-api
+nvm use 20.11.0
+npm start
+```
+
+## Troubleshooting Common Setup Issues
+
+### Issue: `ng: command not found`
+
+**Symptoms:**
+```
+bash: ng: command not found
+```
+
+**Causes:**
+- Angular CLI not installed globally
+- npm global bin directory not in PATH
+- Installation failed silently
+
+**Solutions:**
+
+1. Install Angular CLI globally:
+```bash
+npm install -g @angular/cli@latest
+```
+
+2. Verify npm global directory:
+```bash
+npm config get prefix
+```
+
+3. If using nvm, reinstall global packages after switching versions:
+```bash
+npm install -g @angular/cli@latest
+```
+
+4. Use npx instead (no global installation needed):
+```bash
+npx @angular/cli@latest serve
+npx @angular/cli@latest generate component my-component
+```
+
+<Aside type="tip">
+Using `npx` is often simpler and ensures you're always using the latest CLI version.
+</Aside>
+
+### Issue: Port 4200 Already in Use
+
+**Symptoms:**
+```
+Error: Port 4200 is already in use. Would you like to use a different port (4201)?
+```
+
+**Causes:**
+- Another application using the port
+- Previous Angular server still running
+- Multiple development servers started
+
+**Solutions:**
+
+1. Use a different port:
+```bash
+ng serve --port 4300
+```
+
+2. Kill the process using port 4200:
+
+**macOS/Linux:**
+```bash
+lsof -ti:4200 | xargs kill -9
+```
+
+**Windows (PowerShell):**
+```powershell
+Stop-Process -Id (Get-NetTCPConnection -LocalPort 4200).OwningProcess -Force
+```
+
+3. Check what's using the port:
+
+**macOS/Linux:**
+```bash
+lsof -i :4200
+```
+
+**Windows (Command Prompt):**
+```cmd
+netstat -ano | findstr :4200
+```
+
+### Issue: Node Version Not Compatible
+
+**Symptoms:**
+```
+The engine "node" is incompatible with this module.
+Expected version ">=18.19.0". Got "16.13.0"
+```
+
+**Causes:**
+- Node.js version too old
+- Project requires specific Node version
+- Version mismatch between projects
+
+**Solutions:**
+
+1. Check current Node version:
+```bash
+node --version
+```
+
+2. Update Node.js directly:
+   - Visit [nodejs.org](https://nodejs.org/) and download the LTS version
+   - Run the installer
+
+3. Use NVM for version management (Recommended):
+```bash
+nvm install 18.19.0
+nvm use 18.19.0
+node --version  # Verify the change
+```
+
+4. Create `.nvmrc` in project root:
+```
+18.19.0
+```
+
+Then use:
+```bash
+nvm use
+```
+
+### Issue: npm install Hangs or Fails
+
+**Symptoms:**
+```
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE unable to resolve dependency tree
+```
+
+**Causes:**
+- Corrupted npm cache
+- Conflicting dependencies
+- Network issues
+- npm configuration issues
+
+**Solutions:**
+
+1. Clear npm cache:
+```bash
+npm cache clean --force
+npm install
+```
+
+2. Try npm install with legacy peer deps:
+```bash
+npm install --legacy-peer-deps
+```
+
+3. Delete lock file and reinstall:
+```bash
+rm package-lock.json
+npm install
+```
+
+4. Use npm ci (Recommended for clean installs):
+```bash
+npm ci  # Installs exact versions from package-lock.json
+```
+
+5. Update npm itself:
+```bash
+npm install -g npm@latest
+```
+
+### Issue: TypeScript Compilation Errors
+
+**Symptoms:**
+```
+error TS2304: Cannot find name 'NgModule'
+error TS1005: ',' expected
+```
+
+**Causes:**
+- TypeScript version mismatch
+- Missing type definitions
+- Incorrect tsconfig.json
+- Angular packages not installed
+
+**Solutions:**
+
+1. Reinstall Angular dependencies:
+```bash
+rm node_modules package-lock.json
+npm install
+```
+
+2. Update Angular and related packages:
+```bash
+ng update @angular/core @angular/cli
+```
+
+3. Check TypeScript version:
+```bash
+npx tsc --version
+```
+
+4. Rebuild the project:
+```bash
+ng build
+```
+
+### Issue: CORS Errors When Fetching Data
+
+**Symptoms:**
+```
+Access to XMLHttpRequest at 'http://api.example.com/data' 
+from origin 'http://localhost:4200' has been blocked by CORS policy
+```
+
+**Causes:**
+- Backend API doesn't allow requests from localhost:4200
+- Missing CORS headers on backend
+- Incorrect proxy configuration
+
+**Solutions:**
+
+1. Use proxy configuration in development:
+
+Create/edit `proxy.conf.json`:
+```json
+{
+  "/api": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
+```
+
+2. Update `angular.json`:
+```json
+"serve": {
+  "options": {
+    "proxyConfig": "proxy.conf.json"
+  }
+}
+```
+
+3. Use the proxy in your API calls:
+```ts
+// Instead of: http://localhost:3000/api/users
+this.http.get('/api/users')
+```
+
+### Issue: Memory Errors During Build
+
+**Symptoms:**
+```
+JavaScript heap out of memory
+FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed
+```
+
+**Causes:**
+- Large project with many dependencies
+- Default Node memory limit too low
+- Inefficient build configuration
+
+**Solutions:**
+
+1. Increase Node memory:
+```bash
+export NODE_OPTIONS=--max_old_space_size=4096
+ng build
+```
+
+2. For Windows (Command Prompt):
+```cmd
+set NODE_OPTIONS=--max_old_space_size=4096
+ng build
+```
+
+3. For Windows (PowerShell):
+```powershell
+$env:NODE_OPTIONS="--max_old_space_size=4096"
+ng build
+```
+
+4. Add to npm scripts in `package.json`:
+```json
+{
+  "scripts": {
+    "build": "export NODE_OPTIONS=--max_old_space_size=4096 && ng build"
+  }
+}
+```
+
+### Issue: Module Not Found Errors
+
+**Symptoms:**
+```
+error TS2307: Cannot find module '@angular/core' or its corresponding type declarations
+```
+
+**Causes:**
+- Missing node_modules directory
+- Incomplete npm installation
+- Package.json missing dependencies
+- Incorrect import paths
+
+**Solutions:**
+
+1. Reinstall dependencies:
+```bash
+npm install
+```
+
+2. Check if package is in package.json:
+```bash
+grep "@angular/core" package.json
+```
+
+3. Install missing packages:
+```bash
+npm install @angular/core --save
+```
+
+4. Verify import paths use correct aliases:
+```ts
+// Good
+import { MyComponent } from '@app/components/my-component';
+
+// Bad (if path alias not configured)
+import { MyComponent } from '../../../components/my-component';
+```
+
+### Issue: Port Already in Use (Extended)
+
+**Find and kill processes by port (All platforms):**
+
+```bash
+# Use this npm package (works everywhere)
+npm install -g kill-port
+kill-port 4200
+```
+
+Or create a utility script in `package.json`:
+
+```json
+{
+  "scripts": {
+    "kill:4200": "kill-port 4200",
+    "serve": "npm run kill:4200 && ng serve"
+  }
+}
+```
+
+## Debugging Setup Issues
+
+### Enable Verbose Logging
+
+```bash
+ng serve --verbose
+```
+
+This provides detailed information about the build process and can help identify issues.
+
+### Check System Information
+
+```bash
+ng version --verbose
+```
+
+Shows detailed Angular and system information useful for debugging.
+
+### Common Environment Variables
+
+```bash
+# Skip package manager installation
+ng new my-app --skip-install
+
+# Use specific package manager
+ng new my-app --package-manager=npm
+
+# Skip git initialization
+ng new my-app --skip-git
+
+# Use specific Angular version
+ng new my-app --package-manager npm --version 17
+```
+
+## Next Steps
+
+Once your development environment is set up:
+
+1. ✅ Create your first component
+2. ✅ Understand Angular's component architecture
+3. ✅ Learn about services and dependency injection
+4. ✅ Explore routing and navigation
+5. ✅ Master forms and form validation
+6. ✅ Add HTTP communication with your backend
+
+---
+
+## References
+
+- [Angular CLI Documentation](https://angular.dev/cli)
+- [Node.js Download](https://nodejs.org/)
+- [Angular Quick Start Guide](https://angular.dev/tutorials/first-app)
+- [Angular Development Server Guide](https://angular.dev/tools/cli/serve)
+- [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm)
+- [NVM Windows](https://github.com/coreybutler/nvm-windows)
+- [npm Official Documentation](https://docs.npmjs.com/)
+- [Angular Troubleshooting Guide](https://angular.dev/guide/troubleshooting)
