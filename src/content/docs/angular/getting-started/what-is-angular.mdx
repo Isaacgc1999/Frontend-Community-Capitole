@@ -1,0 +1,191 @@
+---
+title: What is Angular?
+description: Learn what Angular is, its core concepts, and why you should use it for modern web development.
+sidebar.order: 1
+---
+
+import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Overview
+
+Angular is a powerful, open-source framework for building dynamic web applications using TypeScript. Developed and maintained by Google, Angular provides a complete solution for creating scalable, maintainable, and feature-rich applications.
+
+## Key Characteristics
+
+### 1. **Full-Featured Framework**
+
+Angular is not just a library—it's a comprehensive framework that includes:
+
+- **Component-based architecture** — Build reusable UI components
+- **Dependency Injection** — Manage dependencies efficiently
+- **TypeScript first** — Strong typing and modern language features
+- **Reactive programming** — RxJS integration for handling asynchronous operations
+- **Built-in testing tools** — Jasmine, Karma, and testing utilities
+- **HTTP client** — For API communication
+- **Routing** — Navigate between application pages
+- **Forms** — Both template-driven and reactive forms
+- **Animation library** — Built-in animation support
+
+### 2. **Strong Typing with TypeScript**
+
+Angular is built from the ground up with TypeScript, providing:
+
+- Type safety and better IDE support
+- Better error detection at compile time
+- Improved code documentation
+- Easier refactoring
+
+### 3. **Unidirectional Data Flow**
+
+Angular follows a hierarchical data flow from parent to child components, making applications:
+
+- Easier to debug
+- More predictable
+- Less prone to unintended side effects
+
+### 4. **Dependency Injection**
+
+Angular's built-in dependency injection container promotes:
+
+- **Loose coupling** — Components and services are independent
+- **Testability** — Easy to mock dependencies in tests
+- **Reusability** — Services can be shared across components
+
+<Aside type="tip">
+The Angular injector manages the creation and lifetime of service instances automatically.
+</Aside>
+
+## Angular vs Other Frameworks
+
+<Tabs>
+  <TabItem label="Angular">
+    ✅ Full-featured framework
+    ✅ Strong typing (TypeScript)
+    ✅ Powerful CLI tooling
+    ✅ Built-in routing and forms
+    ✅ Large ecosystem
+    ✅ Enterprise-ready
+    ❌ Steeper learning curve
+    ❌ Larger bundle size (without optimization)
+  </TabItem>
+  <TabItem label="React">
+    ✅ Lightweight library
+    ✅ Easy to learn
+    ✅ Large community
+    ✅ Flexible architecture
+    ❌ Requires additional libraries for routing, forms
+    ❌ Optional typing (TypeScript)
+    ❌ More decisions needed for app structure
+  </TabItem>
+  <TabItem label="Vue">
+    ✅ Easy to learn
+    ✅ Flexible structure
+    ✅ Great documentation
+    ✅ Progressive enhancement
+    ❌ Smaller ecosystem
+    ❌ Less adopted in enterprise
+  </TabItem>
+</Tabs>
+
+## When to Use Angular
+
+Angular is an excellent choice when:
+
+- Building **large-scale, enterprise applications**
+- You need a **complete framework** with all tools included
+- Your team values **strong typing and structure**
+- You're building complex **dashboards or admin panels**
+- You need built-in **lazy loading and performance optimization**
+- Team members are comfortable with **TypeScript and decorators**
+
+## Core Concepts at a Glance
+
+### Components
+Building blocks of Angular applications. Each component encapsulates:
+- Template (HTML)
+- Logic (TypeScript class)
+- Styles (CSS/SCSS)
+
+### Services
+Reusable classes that handle business logic, data fetching, or cross-cutting concerns.
+
+### Directives
+Attributes or elements that modify or enhance DOM elements (e.g., `*ngIf`, `*ngFor`).
+
+### Dependency Injection (DI)
+The framework automatically provides required dependencies to components and services.
+
+### Modules (NgModules) / Standalone Components
+Organize your application into logical units. Angular 18+ supports standalone components as an alternative to NgModules.
+
+### Reactive Programming (RxJS)
+Handle asynchronous operations using Observables for event handling and data streams.
+
+## Angular Versions
+
+Angular follows a predictable release cycle:
+
+- **Major version** — Released every 6 months
+- **Minor versions** — Between major releases
+- **Patch versions** — Bug fixes and security updates
+- **LTS (Long-Term Support)** — Versions released every 2 years with extended support
+
+The current version is **Angular 18** (released May 2024).
+
+## Key Benefits
+
+<Aside type="tip">
+These benefits make Angular particularly valuable for large teams and enterprise projects.
+</Aside>
+
+✅ **Comprehensive Solution** — Everything you need is included or officially supported
+✅ **Developer Productivity** — Powerful CLI and development tools
+✅ **Performance** — Ahead-of-Time (AOT) compilation and tree-shaking
+✅ **Scalability** — Designed to grow with your application
+✅ **Community & Support** — Backed by Google with extensive documentation
+✅ **Testing** — Built-in testing framework and utilities
+✅ **Accessibility** — Built-in support for ARIA and accessibility guidelines
+
+## Architecture Overview
+
+```
+┌─────────────────────────────────────┐
+│      Angular Application            │
+├─────────────────────────────────────┤
+│  Modules / Standalone Components    │
+│  ├─ Components                      │
+│  ├─ Services                        │
+│  └─ Guards, Interceptors, Pipes     │
+├─────────────────────────────────────┤
+│  Routing Module                     │
+│  ├─ Route Configuration             │
+│  └─ Navigation                      │
+├─────────────────────────────────────┤
+│  Dependency Injection Container     │
+│  └─ Service Management              │
+├─────────────────────────────────────┤
+│  Angular Core & Platform            │
+│  ├─ Change Detection                │
+│  ├─ Template Compilation            │
+│  └─ Lifecycle Management            │
+└─────────────────────────────────────┘
+```
+
+## Summary
+
+Angular is a mature, full-featured framework ideal for:
+
+- Building professional, production-grade applications
+- Large teams that benefit from structure and conventions
+- Projects requiring sophisticated features and scalability
+- Enterprises needing long-term support and stability
+
+In the following sections, you'll learn how to set up Angular, create your first application, and master its powerful features.
+
+---
+
+## References
+
+- [Angular Official Documentation](https://angular.dev)
+- [Angular vs Other Frameworks](https://angular.dev/overview#why-angular)
+- [Angular Architecture Guide](https://angular.dev/guide/architecture)
